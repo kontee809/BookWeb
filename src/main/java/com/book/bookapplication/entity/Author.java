@@ -1,6 +1,7 @@
 package com.book.bookapplication.entity;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
 import lombok.*;
 
 @Entity
@@ -16,9 +17,11 @@ public class Author {
     private int author_id;
 
     @Column(name = "author_name", nullable = false)
+    @NotBlank(message = "không được để trống phần này!")
     private String authorName;
 
     @Column(name = "description", nullable = false)
+    @NotBlank(message = "không được để trống phần này!")
     private String description;
 
 
