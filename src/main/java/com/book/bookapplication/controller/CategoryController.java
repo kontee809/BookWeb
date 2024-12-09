@@ -29,7 +29,7 @@ public class CategoryController {
 
     @PostMapping("/add-category/save")
     public String addCategory(@ModelAttribute("add_category") @Valid Category category,
-                              BindingResult bindingResult, Model model) {
+                              BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
             return "admin-add-category";
         }
@@ -40,6 +40,23 @@ public class CategoryController {
     @GetMapping("/{category_id}")
     public String deleteCategory(@PathVariable("category_id") int category_id) {
         categoryService.deleteCategoryById(category_id);
+        return "redirect:/admin/category";
+    }
+
+    @GetMapping("/edit-category/{category_id}")
+    public String editCategory(@PathVariable("category_id") int category_id, Model model) {
+        model.addAttribute("edit_category", categoryService.getCategoryById(category_id));
+        return "admin-edit-category";
+    }
+
+    @PostMapping("/edit-category/update/{category_id}")
+    public String updateCategory(@PathVariable("category_id") int category_id,
+                                 @ModelAttribute("edit_category") @Valid Category category,
+                                 BindingResult bindingResult) {
+        if (bindingResult.hasErrors()) {
+            return "admin-edit-category";
+        }
+        categoryService.updateCategory(category_id, category);
         return "redirect:/admin/category";
     }
 

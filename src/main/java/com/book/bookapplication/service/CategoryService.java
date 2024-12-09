@@ -24,4 +24,16 @@ public class CategoryService {
         categoryRepository.deleteById(category_id);
     }
 
+    public Category getCategoryById(int category_id) {
+        return categoryRepository.findById(category_id)
+                .orElseThrow(() -> new IllegalArgumentException("Invalid category id" + category_id));
+    }
+
+    public Category updateCategory(int category_id, Category category) {
+        Category existingCategory = getCategoryById(category_id);
+        existingCategory.setCategoryName(category.getCategoryName());
+
+        return categoryRepository.save(existingCategory);
+    }
+
 }

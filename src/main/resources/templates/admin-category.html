@@ -341,7 +341,7 @@
                               <td th:text="${value.categoryName}"></td>
                               <td>
                                  <div class="flex align-items-center list-user-action">
-                                    <a class="bg-primary" data-toggle="tooltip" data-placement="top" title="" data-original-title="Sửa" href="#"><i class="ri-pencil-line"></i></a>
+                                    <a class="bg-primary" data-toggle="tooltip" data-placement="top" title="" data-original-title="Sửa" th:href="@{/admin/category/edit-category/{category_id}(category_id=${value.category_id})}"><i class="ri-pencil-line"></i></a>
                                     <a class="bg-primary" onclick="return confirm('Bạn có muốn xóa danh mục này không?');" data-toggle="tooltip" data-placement="top" title="" data-original-title="Xoá" th:href="@{/admin/category/{category_id}(category_id=${value.category_id})}"><i class="ri-delete-bin-line"></i></a>
                                  </div>
                               </td>
