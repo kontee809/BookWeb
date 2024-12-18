@@ -33,7 +33,7 @@
                             </div>
                         </div>
                         <div class="iq-card-body">
-                            <form th:action="@{/admin/category/edit-category/update/{category_id}(category_id=${edit_category.category_id})}" method="post" th:object="${edit_category}">
+                            <form th:action="@{/admin/category/edit-category/update/{category_id}(category_id=${edit_category.id})}" method="post" th:object="${edit_category}">
                                 <div class="form-group">
                                     <label>Tên danh mục:</label>
                                     <input type="text" class="form-control" th:field="*{categoryName}">

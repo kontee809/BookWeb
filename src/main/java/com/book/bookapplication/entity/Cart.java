@@ -13,7 +13,7 @@ import lombok.*;
 public class Cart {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int cart_id;
+    private int id;
 
     @Column(name = "user_id", nullable = false)
     private int user_id;

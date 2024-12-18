@@ -55,8 +55,8 @@
                                  </td>
                                  <td>
                                     <div class="flex align-items-center list-user-action">
-                                       <a class="bg-primary" data-toggle="tooltip" data-placement="top" title="" data-original-title="Sửa" th:href="@{/admin/author/edit/{author_id}(author_id=${value.author_id})}"><i class="ri-pencil-line"></i></a>
-                                       <a class="bg-primary" data-toggle="tooltip" data-placement="top" title="" data-original-title="Xoá" onclick="return confirm('Bạn có muốn xóa tác giả này không?');" th:href="@{/admin/author/delete/{author_id}(author_id=${value.author_id})}"><i class="ri-delete-bin-line"></i></a>
+                                       <a class="bg-primary" data-toggle="tooltip" data-placement="top" title="" data-original-title="Sửa" th:href="@{/admin/author/edit/{author_id}(author_id=${value.id})}"><i class="ri-pencil-line"></i></a>
+                                       <a class="bg-primary" data-toggle="tooltip" data-placement="top" title="" data-original-title="Xoá" onclick="return confirm('Bạn có muốn xóa tác giả này không?');" th:href="@{/admin/author/delete/{author_id}(author_id=${value.id})}"><i class="ri-delete-bin-line"></i></a>
                                     </div>
                                  </td>
                               </tr>

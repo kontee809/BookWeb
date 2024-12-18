@@ -14,7 +14,7 @@ import lombok.*;
 public class Category {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int category_id;
+    private int id;
 
     @Column(name = "category_name", nullable = false)
     @NotBlank(message = "không được để trống phần này!")

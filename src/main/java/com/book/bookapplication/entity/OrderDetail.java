@@ -13,7 +13,7 @@ import lombok.*;
 public class OrderDetail {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int order_detail_id;
+    private int id;
 
     @Column(name = "quantity", nullable = false)
     private int quantity;

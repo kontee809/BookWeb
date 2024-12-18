@@ -33,7 +33,7 @@
                             </div>
                         </div>
                         <div class="iq-card-body">
-                            <form th:action="@{/admin/author/update/{author_id}(author_id=${edit_author.author_id})}" method="post" th:object="${edit_author}">
+                            <form th:action="@{/admin/author/update/{author_id}(author_id=${edit_author.id})}" method="post" th:object="${edit_author}">
                                 <div class="form-group">
                                     <label>Tên tác giả:</label>
                                     <input type="text" class="form-control" th:field="*{authorName}">

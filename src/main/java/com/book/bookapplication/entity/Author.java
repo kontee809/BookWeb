@@ -14,7 +14,7 @@ import lombok.*;
 public class Author {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int author_id;
+    private int id;
 
     @Column(name = "author_name", nullable = false)
     @NotBlank(message = "không được để trống phần này!")
