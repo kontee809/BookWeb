@@ -49,7 +49,7 @@ public class AuthorController {
         return "admin-edit-author";
     }
 
-    @PostMapping("/update/{author_id}")
+    @PostMapping("/update/save/{author_id}")
     public String updateAuthor(@PathVariable("author_id") int author_id,
                                @ModelAttribute("edit_author") @Valid Author author,
                                BindingResult bindingResult) {

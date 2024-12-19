@@ -42,9 +42,12 @@ public class BookController {
 
     @PostMapping("/add-book/save")
     public String addBook(@ModelAttribute("book") @Valid Book book,
+                          BindingResult bindingResult,
                           @RequestParam("imageFile") MultipartFile file,
-                          BindingResult bindingResult, Model model) {
+                           Model model) {
         if(bindingResult.hasErrors()) {
+            model.addAttribute("list_author", authorService.getAllAuthor());
+            model.addAttribute("list_category", categoryService.findAllCategory());
             return "admin-add-book";
         }
 
@@ -57,5 +60,46 @@ public class BookController {
         return "redirect:/admin/category";
     }
 
+    @GetMapping("/delete/{book_id}")
+    public String deleteBookById(@PathVariable("book_id") int book_id) {
+        bookService.deleteBookById(book_id);
+        return "redirect:/admin/category";
+    }
+
+    @GetMapping("/edit/{book_id}")
+    public String showEditBookForm(@PathVariable("book_id") int book_id, Model model) {
+        Book book = bookService.getBookById(book_id);
+        if(book == null) {
+            return "redirect:/admin/category";
+        }
+
+        model.addAttribute("book", book);
+        model.addAttribute("list_category", categoryService.findAllCategory());
+        model.addAttribute("list_author", authorService.getAllAuthor());
+
+        return "admin-edit-book";
+    }
+
+    @PostMapping("/update/save/{book_id}")
+    public String updateBook(@PathVariable("book_id") int book_id,
+                             @ModelAttribute("book") @Valid Book book,
+                             BindingResult bindingResult,
+                             @RequestParam("imageFile") MultipartFile file,
+                             Model model) {
+        if (bindingResult.hasErrors()) {
+            model.addAttribute("list_category", categoryService.findAllCategory());
+            model.addAttribute("list_author", authorService.getAllAuthor());
+            return "admin-edit-book";
+        }
+
+        try {
+            bookService.updateBook(book_id, book, file);
+        } catch (IOException e) {
+            model.addAttribute("error", "Không tải được ảnh lên cloud");
+            return "admin-edit-book";
+        }
+
+        return "redirect:/admin/category";
+    }
 
 }

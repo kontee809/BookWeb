@@ -36,6 +36,8 @@
                            <div class="form-group">
                               <label>Tên sách:</label>
                               <input type="text" class="form-control" th:field="*{bookName}">
+                              <div class="text-danger" th:if="${#fields.hasErrors('bookName')}"
+                                   th:errors="*{bookName}"></div>
                            </div>
                            <div class="form-group">
                               <label>Danh mục sách:</label>
@@ -52,21 +54,27 @@
                            <div class="form-group">
                               <label>Hình ảnh:</label>
                               <div class="custom-file">
-                                 <input type="file" class="custom-file-input" accept="image/png, image/jpeg" name="imageFile">
+                                 <input type="file" class="custom-file-input" accept="image/png, image/jpeg" name="imageFile" required>
                                  <label class="custom-file-label">Choose file</label>
                               </div>
                            </div>
                            <div class="form-group">
                               <label>Giá sách:</label>
                               <input type="text" class="form-control" th:field="*{price}">
+                              <div class="text-danger" th:if="${#fields.hasErrors('price')}"
+                                   th:errors="*{price}"></div>
                            </div>
                            <div class="form-group">
                               <label>Số lượng:</label> <br>
                               <input style="width: 50px" type="text" class="form-control" th:field="*{quantity}">
+                              <div class="text-danger" th:if="${#fields.hasErrors('quantity')}"
+                                   th:errors="*{quantity}"></div>
                            </div>
                            <div class="form-group">
                               <label>Mô tả:</label>
                               <textarea class="form-control" rows="4" th:field="*{description}"></textarea>
+                              <div class="text-danger" th:if="${#fields.hasErrors('description')}"
+                                   th:errors="*{description}"></div>
                            </div>
                            <button type="submit" class="btn btn-primary">Gửi</button>
                            <button type="reset" class="btn btn-danger" th:onclick="|javascript:window.history.back();|">Trở lại</button>
